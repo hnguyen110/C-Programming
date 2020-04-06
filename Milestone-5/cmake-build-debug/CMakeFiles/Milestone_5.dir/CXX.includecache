@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/Motorcycle.cpp
+Motorcycle.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/Motorcycle.h
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/Motorcycle.h
+Vehicle.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/Vehicle.h
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/ReadWritable.h
+iostream
+-
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/Vehicle.h
+iostream
+-
+cstring
+-
+cctype
+-
+ReadWritable.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-5/ReadWritable.h
+

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-2/Menu.h
+iostream
+-
+cstring
+-
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-2/Parking.cpp
+Parking.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-2/Parking.h
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-2/Parking.h
+iostream
+-
+cstring
+-
+Menu.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-2/Menu.h
+

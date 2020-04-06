@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-4
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-4/cmake-build-debug

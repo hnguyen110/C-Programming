@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-3/ReadWritable.cpp
+ReadWritable.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-3/ReadWritable.h
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-3/ReadWritable.h
+iostream
+-
+
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-3/main.cpp
+iostream
+-
+fstream
+-
+ReadWritable.h
+/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-3/ReadWritable.h
+
