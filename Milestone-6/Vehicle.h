@@ -53,7 +53,6 @@ namespace sdds {
         std::istream & read(std::istream &) override;
         std::ostream & write(std::ostream &) const override;
 
-
         virtual void setEmpty();
         virtual void setToEmptyState();
         virtual bool isEmpty() const;
@@ -61,8 +60,10 @@ namespace sdds {
         void setLicensePlate(const char*);
         char* getMakeModel() const;
         void setMakeModel(const char*);
-        char* getVehicleInputData() const;
-        void setVehicleInputData(const char*);
+        virtual char* getVehicleInputData() const;
+        virtual void setVehicleInputData(const char*);
+        virtual void setVehicleData();
+        void appendNewDataToVehicleData(const char*);
     };
 
     bool validateVehicleData(const char*, const char*);
