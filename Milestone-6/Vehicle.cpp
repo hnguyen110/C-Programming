@@ -326,11 +326,9 @@ namespace sdds {
         int firstLen = strlen(firstString);
         int secondLen = strlen(secondString);
         if (firstLen == secondLen) {
-            char* firstCopy = nullptr;
-            char* secondCopy = nullptr;
-            firstCopy = new char[firstLen + 1];
+            char firstCopy[255];
+            char secondCopy[255];
             strcpy(firstCopy, firstString);
-            secondCopy = new char[secondLen + 1];
             strcpy(secondCopy, secondString);
             toLowerCase(firstCopy);
             toLowerCase(secondCopy);
@@ -339,10 +337,6 @@ namespace sdds {
                     return false;
                 }
             }
-            delete[] firstCopy;
-            delete[] secondCopy;
-            firstCopy = nullptr;
-            secondCopy = nullptr;
             return true;
         }
         return false;

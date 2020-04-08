@@ -182,6 +182,7 @@ namespace sdds {
             ++numberOfSpots;
             --parkedVehicleNumber;
             vehicles[postion]->setEmpty();
+            delete vehicles[postion];
             vehicles[postion] = nullptr;
         }
     }
@@ -211,6 +212,7 @@ namespace sdds {
                         cout << *vehicles[counter];
                         cout << endl;
                         vehicles[counter]->setEmpty();
+                        delete vehicles[counter];
                         vehicles[counter] = nullptr;
                     }
                 }
@@ -287,8 +289,8 @@ namespace sdds {
         }
     }
 
-    void Parking::shiftString(int unit, char * originalStr) {
-        char tempString[255];
+    void Parking::shiftString(int unit, char originalStr[]) {
+        char tempString[255] = "";
         int originalStrLength = strlen(originalStr);
         for (int counter = unit; counter < originalStrLength; ++counter) {
             tempString[counter - unit] = originalStr[counter];
@@ -395,6 +397,16 @@ namespace sdds {
         vehicleSelection = nullptr;
     }
 
+    void Parking::setVehicleArrayToNull() {
+        for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
+            if (vehicles[counter] != nullptr) {
+                vehicles[counter]->setEmpty();
+                delete vehicles[counter];
+                vehicles[counter] = nullptr;
+            }
+        }
+    }
+
     void Parking::setToEmptyState() {
         fileName = nullptr;
         parkingMenu = nullptr;
@@ -410,6 +422,7 @@ namespace sdds {
         setFileNameToNull();
         setParkingMenuToNull();
         setVehicleSelectionToNull();
+        setVehicleArrayToNull();
     }
 
     int Parking::run() {
