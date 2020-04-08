@@ -40,7 +40,7 @@ namespace sdds {
 
         void setSideCarState(bool);
         bool getSideCarState() const;
-
+        void setVehicleData() override;
         std::istream & read(std::istream &) override;
         std::ostream & write(std::ostream &) const override;
 

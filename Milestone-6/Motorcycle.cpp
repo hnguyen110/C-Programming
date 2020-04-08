@@ -39,6 +39,47 @@ namespace sdds {
     bool Motorcycle::getSideCarState() const {
         return sideCarState;
     }
+    void Motorcycle::setVehicleData() {
+        Vehicle::setVehicleData();
+        if (getVehicleInputData() != nullptr) {
+            char* inputData = new char[strlen(getVehicleInputData()) + 1];
+            strcpy(inputData, getVehicleInputData());
+            char result[4][255];
+            int counter = 0;
+            int arrayIndex = 0;
+            int sideCarResultLength = 0;
+            int dataLen = strlen(inputData);
+            for (int runner = 0; runner < dataLen; ++runner) {
+                if (inputData[runner] != ',') {
+                    result[arrayIndex][counter] = inputData[runner];
+                    ++counter;
+                    if (arrayIndex == 3) {
+                        ++sideCarResultLength;
+                    }
+                } else {
+                    result[arrayIndex][counter] = '\0';
+                    ++arrayIndex;
+                    counter = 0;
+                    if (arrayIndex == 4) {
+                        break;
+                    }
+                }
+            }
+
+            if (result[3][0] == '0') {
+                setSideCarState(false);
+//                    appendNewDataToVehicleData(",0");
+            } else if (result[3][0] == '1') {
+                setSideCarState(true);
+//                    appendNewDataToVehicleData(",1");
+            } else {
+                setEmpty();
+            }
+
+            delete[] inputData;
+            inputData = nullptr;
+        }
+    }
 
     std::istream & Motorcycle::read(std::istream &is) {
         if (isCsv()) {
@@ -71,8 +112,10 @@ namespace sdds {
                 if (sideCarResultLength == 1 && isDigit(result[3][0])) {
                     if (result[3][0] == '0') {
                         setSideCarState(false);
+                        appendNewDataToVehicleData(",0");
                     } else if (result[3][0] == '1') {
                         setSideCarState(true);
+                        appendNewDataToVehicleData(",1");
                     } else {
                         setEmpty();
                     }

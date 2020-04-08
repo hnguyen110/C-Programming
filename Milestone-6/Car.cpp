@@ -40,6 +40,50 @@ namespace sdds {
     bool Car::getCarWashState() const {
         return carWashState;
     };
+    void Car::setVehicleData() {
+        // Set the fourth data with a function with set vehicle data
+        // We need to add the validation of checking the vehicleInputData
+        // If it is an empty string then set everything to nullptr
+        Vehicle::setVehicleData();
+        if (getVehicleInputData() != nullptr) {
+            char* inputData = new char[strlen(getVehicleInputData()) + 1];
+            strcpy(inputData, getVehicleInputData());
+            char result[4][255];
+            int counter = 0;
+            int arrayIndex = 0;
+            int carWashResultLength = 0;
+            int dataLen = strlen(inputData);
+            for (int runner = 0; runner < dataLen; ++runner) {
+                if (inputData[runner] != ',') {
+                    result[arrayIndex][counter] = inputData[runner];
+                    ++counter;
+                    if (arrayIndex == 3) {
+                        ++carWashResultLength;
+                    }
+                } else {
+                    result[arrayIndex][counter] = '\0';
+                    ++arrayIndex;
+                    counter = 0;
+                    if (arrayIndex == 4) {
+                        break;
+                    }
+                }
+            }
+
+            if (result[3][0] == '0' && isDigit(result[3][0])) {
+                setCarWashState(false);
+//                    appendNewDataToVehicleData(",0");
+            } else if (result[3][0] == '1') {
+                setCarWashState(true);
+//                    appendNewDataToVehicleData(",1");
+            } else {
+                setEmpty();
+            }
+
+            delete[] inputData;
+            inputData = nullptr;
+        }
+    }
 
     std::istream & Car::read(std::istream &is) {
         if (isCsv()) {
@@ -72,8 +116,10 @@ namespace sdds {
                 if (carWashResultLength == 1) {
                     if (result[3][0] == '0' && isDigit(result[3][0])) {
                         setCarWashState(false);
+                        appendNewDataToVehicleData(",0");
                     } else if (result[3][0] == '1') {
                         setCarWashState(true);
+                        appendNewDataToVehicleData(",1");
                     } else {
                         setEmpty();
                     }

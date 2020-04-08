@@ -40,7 +40,7 @@ namespace sdds {
 
         void setCarWashState(bool);
         bool getCarWashState() const;
-
+        void setVehicleData() override;
         std::istream & read(std::istream &) override;
         std::ostream & write(std::ostream &) const override;
 

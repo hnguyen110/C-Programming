@@ -76,7 +76,6 @@ namespace sdds {
     std::istream & Vehicle::read(std::istream& is) {
         if (ReadWritable::isCsv()) {
             char data[255];
-            char result[3][255];
 //            is >> data;
             is.getline(data, sizeof(data));
             if (is.fail()) {
@@ -87,30 +86,7 @@ namespace sdds {
             } else {
                 vehicleInputData = new char[strlen(data) + 1];
                 strcpy(vehicleInputData, data);
-                int counter = 0;
-                int arrayIndex = 0;
-                int dataLen = strlen(data);
-                for (int runner = 0; runner < dataLen; ++runner) {
-                    if (data[runner] != ',') {
-                        result[arrayIndex][counter] = data[runner];
-                        ++counter;
-                    } else {
-                        result[arrayIndex][counter] = '\0';
-                        ++arrayIndex;
-                        counter = 0;
-                        if (arrayIndex == 3) {
-                            break;
-                        }
-                    }
-                }
-                if (validateReadStreamData(result[0], result[1], result[2])) {
-                    setParkingSpot(std::stoi(result[0]));
-                    toUpperCase(result[1]);
-                    setLicensePlate(result[1]);
-                    setMakeModel(result[2]);
-                } else {
-                    setEmpty();
-                }
+                setVehicleData();
             }
         } else {
             // Set the license plate from the keyboard
@@ -253,6 +229,55 @@ namespace sdds {
         }
         vehicleInputData = new char[strlen(inputData) + 1];
         strcpy(vehicleInputData, inputData);
+    }
+
+    void Vehicle::setVehicleData() {
+        if (getVehicleInputData() != nullptr) {
+            char data[255];
+            char result[3][255];
+            int counter = 0;
+            int arrayIndex = 0;
+            strcpy(data, vehicleInputData);
+            int dataLen = strlen(data);
+            for (int runner = 0; runner < dataLen; ++runner) {
+                if (data[runner] != ',') {
+                    result[arrayIndex][counter] = data[runner];
+                    ++counter;
+                } else {
+                    result[arrayIndex][counter] = '\0';
+                    ++arrayIndex;
+                    counter = 0;
+                    if (arrayIndex == 3) {
+                        break;
+                    }
+                }
+            }
+
+            if (validateReadStreamData(result[0], result[1], result[2])) {
+                setParkingSpot(std::stoi(result[0]));
+                toUpperCase(result[1]);
+                setLicensePlate(result[1]);
+                setMakeModel(result[2]);
+            } else {
+                setEmpty();
+            }
+        } else {
+            setEmpty();
+        }
+    }
+
+    void Vehicle::appendNewDataToVehicleData(const char * additionalStr) {
+        char tempData[255] = "";
+        if (vehicleInputData != nullptr && strlen(vehicleInputData) != 0) {
+            strcat(tempData, vehicleInputData);
+        }
+        if (additionalStr != nullptr) {
+            strcat(tempData, additionalStr);
+        }
+        delete[] vehicleInputData;
+        vehicleInputData = nullptr;
+        vehicleInputData = new char[strlen(tempData) + 1];
+        strcpy(vehicleInputData, tempData);
     }
 
     bool validateVehicleData(const char* licensePlate, const char* makeAndModel) {

@@ -24,8 +24,8 @@ that my professor provided to complete my workshops and assignments.
 #ifndef MILESTONE_2_PARKING_H
 #define MILESTONE_2_PARKING_H
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <cstring>
 #include "Menu.h"
 #include "Vehicle.h"
@@ -63,6 +63,7 @@ namespace sdds {
         void saveDataToFile();
 
         // Other member functions
+        void shiftString(int unit, char * originalStr);
         bool isDuplicateLicensePlate(int);
         int searchLicensePlateNo(const char*);
         int getEmptyPosition();
