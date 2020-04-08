@@ -128,12 +128,10 @@ namespace sdds {
         int availablePosition = getEmptyPosition();
         if (availablePosition == -1) {
             cout << "Parking is full" << endl;
-            exit(0);
         } else {
             int result = vehicleSelection->run();
             if (result == 3) {
                 cout << "Parking Cancelled" << endl;
-                exit(0);
             } else {
                 if (result == 1) {
                     vehicles[availablePosition] = new Car();
@@ -152,7 +150,6 @@ namespace sdds {
                     cout << "Can not park; License plate already in the system!" << endl;
                     vehicles[availablePosition]->setEmpty();
                     vehicles[availablePosition] = nullptr;
-                    exit(0);
                 } else {
                     cout << "Parking Ticket" << endl;
                     --numberOfSpots;
@@ -234,28 +231,17 @@ namespace sdds {
         if (!isEmpty()) {
             cout << "loading data from " << fileName << endl;
             int emptyPosition;
-            char currentChar;
             int currentIndex = 0;
-            int currentPos = 0;
-            int commaCounter = 0;
             char dataStream[100][255];
             ifstream parkingDataFile(fileName);
             if (parkingDataFile.is_open()) {
                 while(parkingDataFile.good()) {
-                    parkingDataFile >> currentChar;
-                    if (currentChar == ',' && currentPos != 0) {
-                        ++commaCounter;
-                    }
-                    dataStream[currentIndex][currentPos] = currentChar;
-                    ++currentPos;
-
-                    if (commaCounter == 4 && (currentChar == '1' || currentChar == '0')) {
-                        ++currentIndex;
-                        currentPos = 0;
-                        commaCounter = 0;
-                    }
+                    parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
+                    ++currentIndex;
                 }
             }
+
+            --currentIndex;
 
             if (currentIndex > MAXIMUM_PARKING_SPOT) {
                 currentIndex = MAXIMUM_PARKING_SPOT;
@@ -335,8 +321,10 @@ namespace sdds {
 
     int Parking::getEmptyPosition() {
         for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
-            if (vehicles[counter] == nullptr) {
-                return counter;
+            if (numberOfSpots != 0) {
+                if (vehicles[counter] == nullptr) {
+                    return counter;
+                }
             }
         }
         return -1;
