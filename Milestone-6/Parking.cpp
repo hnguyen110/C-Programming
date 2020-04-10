@@ -59,7 +59,7 @@ namespace sdds {
             if (inputNumberOfSpots >= 10 && inputNumberOfSpots <= MAXIMUM_PARKING_SPOT) {
                 fileName = new char[strlen(inputDataFile) + 1];
                 strcpy(fileName, inputDataFile);
-                numberOfSpots = inputNumberOfSpots + 1;
+                numberOfSpots = inputNumberOfSpots;
             }
         }
 
@@ -130,18 +130,16 @@ namespace sdds {
         } else {
             int result = vehicleSelection->run();
             if (result == 3) {
-                cout << "Parking Cancelled" << endl;
+                cout << "Parking cancelled" << endl;
             } else {
                 if (result == 1) {
                     vehicles[availablePosition] = new Car();
                     vehicles[availablePosition]->setCsv(false);
                     cin >> *vehicles[availablePosition];
-                    cout << "Parking Car" << endl;
                 } else if (result == 2) {
                     vehicles[availablePosition] = new Motorcycle();
                     vehicles[availablePosition]->setCsv(false);
                     cin >> *vehicles[availablePosition];
-                    cout << "Parking Motorcycle" << endl;
                 }
 
                 // Check if the vehicle has the same license plate or not
@@ -164,7 +162,7 @@ namespace sdds {
     }
 
     void Parking::returnVehicle() {
-        cout << "Returning Vehicle" << endl;
+        cout << "Return Vehicle" << endl;
         cout << "Enter Licence Plate Number: ";
         char licensePlateNo[255];
         cin.getline(licensePlateNo, sizeof(licensePlateNo));
@@ -237,7 +235,6 @@ namespace sdds {
 
     bool Parking::loadFileData() {
         if (!isEmpty()) {
-            cout << "loading data from " << fileName << endl;
             int emptyPosition;
             int currentIndex = 0;
             char dataStream[100][255];
@@ -284,8 +281,6 @@ namespace sdds {
 
     void Parking::saveDataToFile() {
         if (!isEmpty()) {
-            cout << "Exiting program!" << endl;
-            cout << "Saving data into " << fileName << endl;
             ofstream parkingDataFile(fileName);
             if (parkingDataFile.is_open()) {
                 for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
@@ -298,6 +293,7 @@ namespace sdds {
                 }
             }
         }
+        cin.ignore(1000, '\n');
     }
 
     void Parking::shiftString(int unit, char originalStr[]) {
@@ -351,12 +347,13 @@ namespace sdds {
         } else if (result == 2) {
             returnVehicle();
         } else if (result == 3) {
-            cout << "Listing Parked Vehicles" << endl;
+            cout << "*** List of parked vehicles ***" << endl;
             listParkedVehicle();
         } else if (result == 4) {
             state = closeParking();
         } else if (result == 5) {
             state = exitParkingApp();
+            cout << "Exiting program!" << endl;
         } else {
             // Do nothing because the input checking is done in run function already
         }
