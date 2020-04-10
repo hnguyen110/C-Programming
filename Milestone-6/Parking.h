@@ -72,6 +72,7 @@ namespace sdds {
         void setFileNameToNull();
         void setParkingMenuToNull();
         void setVehicleSelectionToNull();
+        void setVehicleArrayToNull();
         void setToEmptyState();
         void setEmpty();
 

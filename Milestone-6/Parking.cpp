@@ -148,7 +148,8 @@ namespace sdds {
                 // Check if the vehicle has the same license plate or not
                 if (isDuplicateLicensePlate(availablePosition)) {
                     cout << "Can not park; License plate already in the system!" << endl;
-                    vehicles[availablePosition]->setEmpty();
+//                    vehicles[availablePosition]->setEmpty();
+                    delete vehicles[availablePosition];
                     vehicles[availablePosition] = nullptr;
                 } else {
                     cout << "Parking Ticket" << endl;
@@ -181,7 +182,8 @@ namespace sdds {
             cout << *vehicles[postion];
             ++numberOfSpots;
             --parkedVehicleNumber;
-            vehicles[postion]->setEmpty();
+//            vehicles[postion]->setEmpty();
+            delete vehicles[postion];
             vehicles[postion] = nullptr;
         }
     }
@@ -210,7 +212,8 @@ namespace sdds {
                         cout << "*********************" << endl;
                         cout << *vehicles[counter];
                         cout << endl;
-                        vehicles[counter]->setEmpty();
+//                        vehicles[counter]->setEmpty();
+                        delete vehicles[counter];
                         vehicles[counter] = nullptr;
                     }
                 }
@@ -277,7 +280,7 @@ namespace sdds {
             if (parkingDataFile.is_open()) {
                 for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
                     if (parkingDataFile.good()) {
-                        if (vehicles[counter] != nullptr && !vehicles[counter]->isEmpty()) {
+                        if (vehicles[counter] != nullptr) {
                             vehicles[counter]->setCsv(true);
                             parkingDataFile << *vehicles[counter];
                         }
@@ -287,8 +290,8 @@ namespace sdds {
         }
     }
 
-    void Parking::shiftString(int unit, char * originalStr) {
-        char tempString[255];
+    void Parking::shiftString(int unit, char originalStr[]) {
+        char tempString[255] = "";
         int originalStrLength = strlen(originalStr);
         for (int counter = unit; counter < originalStrLength; ++counter) {
             tempString[counter - unit] = originalStr[counter];
@@ -395,6 +398,16 @@ namespace sdds {
         vehicleSelection = nullptr;
     }
 
+    void Parking::setVehicleArrayToNull() {
+        for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
+            if (vehicles[counter] != nullptr) {
+//                vehicles[counter]->setEmpty();
+                delete vehicles[counter];
+                vehicles[counter] = nullptr;
+            }
+        }
+    }
+
     void Parking::setToEmptyState() {
         fileName = nullptr;
         parkingMenu = nullptr;
@@ -410,6 +423,7 @@ namespace sdds {
         setFileNameToNull();
         setParkingMenuToNull();
         setVehicleSelectionToNull();
+        setVehicleArrayToNull();
     }
 
     int Parking::run() {
