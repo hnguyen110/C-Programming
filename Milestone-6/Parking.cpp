@@ -45,11 +45,9 @@ namespace sdds {
         parkingMenu = nullptr;
         vehicleSelection = nullptr;
 
-//         Loading the data file
         if (loadFileData()) {
             createParkingMenu();
             createVehicleSelectionSubMenu();
-            // Later on this function need to load in the data from the file
         } else {
             cout << "Error in data file" << endl;
         }
@@ -61,7 +59,7 @@ namespace sdds {
             if (inputNumberOfSpots >= 10 && inputNumberOfSpots <= MAXIMUM_PARKING_SPOT) {
                 fileName = new char[strlen(inputDataFile) + 1];
                 strcpy(fileName, inputDataFile);
-                numberOfSpots = inputNumberOfSpots;
+                numberOfSpots = inputNumberOfSpots + 1;
             }
         }
 
@@ -72,6 +70,7 @@ namespace sdds {
             // Later on this function need to load in the data from the file
         } else {
             cout << "Error in data file" << endl;
+            exit(0);
         }
     }
 
@@ -152,11 +151,13 @@ namespace sdds {
                     delete vehicles[availablePosition];
                     vehicles[availablePosition] = nullptr;
                 } else {
+                    cout << endl;
                     cout << "Parking Ticket" << endl;
                     --numberOfSpots;
                     ++parkedVehicleNumber;
                     vehicles[availablePosition]->setParkingSpot(availablePosition + 1);
                     cout << *vehicles[availablePosition];
+                    cout << endl;
                 }
             }
         }
@@ -178,13 +179,16 @@ namespace sdds {
         if (postion == -1) {
             cout << "License plate " << licensePlateNo << " Not found" << endl;
         } else {
+            cout << endl;
             cout << "Returning: " << endl;
             cout << *vehicles[postion];
+            cout << endl;
             ++numberOfSpots;
             --parkedVehicleNumber;
 //            vehicles[postion]->setEmpty();
             delete vehicles[postion];
             vehicles[postion] = nullptr;
+
         }
     }
 
@@ -208,16 +212,18 @@ namespace sdds {
                 cout << "Closing Parking" << endl;
                 for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
                     if (vehicles[counter] != nullptr) {
+                        cout << endl;
                         cout << "Towing request" << endl;
                         cout << "*********************" << endl;
                         cout << *vehicles[counter];
-                        cout << endl;
 //                        vehicles[counter]->setEmpty();
                         delete vehicles[counter];
                         vehicles[counter] = nullptr;
                     }
                 }
                 state = true;
+            } else {
+                cout << "Aborted!" << endl;
             }
         }
         return state;
@@ -230,7 +236,6 @@ namespace sdds {
     }
 
     bool Parking::loadFileData() {
-        bool state = false;
         if (!isEmpty()) {
             cout << "loading data from " << fileName << endl;
             int emptyPosition;
@@ -240,6 +245,12 @@ namespace sdds {
             if (parkingDataFile.is_open()) {
                 while(parkingDataFile.good()) {
                     parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
+                    if (parkingDataFile.bad()) {
+                        parkingDataFile.clear();
+                        parkingDataFile.ignore(1000, '\n');
+                        setEmpty();
+                        return false;
+                    }
                     ++currentIndex;
                 }
             }
@@ -267,9 +278,8 @@ namespace sdds {
                 --numberOfSpots;
                 ++parkedVehicleNumber;
             }
-            state = true;
         }
-        return state;
+        return true;
     }
 
     void Parking::saveDataToFile() {
@@ -302,8 +312,8 @@ namespace sdds {
     bool Parking::isDuplicateLicensePlate(int parkingPosition) {
         bool state = false;
         for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
-            if (parkingPosition != counter) {
-                if (vehicles[parkingPosition] == vehicles[counter]) {
+            if (parkingPosition != counter && vehicles[counter] != nullptr) {
+                if (*vehicles[parkingPosition] == *vehicles[counter]) {
                     state = true;
                 }
             }
@@ -344,11 +354,9 @@ namespace sdds {
             cout << "Listing Parked Vehicles" << endl;
             listParkedVehicle();
         } else if (result == 4) {
-            closeParking();
-            state = true;
+            state = closeParking();
         } else if (result == 5) {
-            exitParkingApp();
-            state = true;
+            state = exitParkingApp();
         } else {
             // Do nothing because the input checking is done in run function already
         }
