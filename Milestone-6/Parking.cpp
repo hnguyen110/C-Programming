@@ -233,47 +233,86 @@ namespace sdds {
         return confirmAction();
     }
 
+//    bool Parking::loadFileData() {
+//        if (!isEmpty()) {
+//            int emptyPosition;
+//            int currentIndex = 0;
+//            char dataStream[100][255];
+//            ifstream parkingDataFile(fileName);
+//            if (parkingDataFile.is_open()) {
+//                while(parkingDataFile.good()) {
+//                    parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
+//                    if (parkingDataFile.bad()) {
+//                        parkingDataFile.clear();
+//                        parkingDataFile.ignore(1000, '\n');
+//                        setEmpty();
+//                        return false;
+//                    }
+//                    ++currentIndex;
+//                }
+//            }
+//
+//            --currentIndex;
+//
+//            if (currentIndex > MAXIMUM_PARKING_SPOT) {
+//                currentIndex = MAXIMUM_PARKING_SPOT;
+//            }
+//
+//            for (int counter = 0; counter < currentIndex; ++counter) {
+//                emptyPosition = getEmptyPosition();
+//                if (tolower(dataStream[counter][0]) == 'c') {
+//                    vehicles[emptyPosition] = new Car();
+//                } else if (tolower(dataStream[counter][0]) == 'm') {
+//                    vehicles[emptyPosition] = new Motorcycle();
+//                }
+//
+//                shiftString(2, dataStream[counter]);
+//
+//                vehicles[emptyPosition]->setCsv(true);
+//                vehicles[emptyPosition]->setVehicleInputData(dataStream[counter]);
+//                vehicles[emptyPosition]->setVehicleData();
+//                vehicles[emptyPosition]->setCsv(false);
+//                --numberOfSpots;
+//                ++parkedVehicleNumber;
+//            }
+//        }
+//        return true;
+//    }
+
     bool Parking::loadFileData() {
         if (!isEmpty()) {
             int emptyPosition;
-            int currentIndex = 0;
-            char dataStream[100][255];
+            char vehicleType[255];
             ifstream parkingDataFile(fileName);
             if (parkingDataFile.is_open()) {
-                while(parkingDataFile.good()) {
-                    parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
+                while (parkingDataFile.good()) {
+                    parkingDataFile.getline(vehicleType, sizeof(vehicleType), ',');
                     if (parkingDataFile.bad()) {
                         parkingDataFile.clear();
                         parkingDataFile.ignore(1000, '\n');
                         setEmpty();
                         return false;
                     }
-                    ++currentIndex;
+
+                    if (numberOfSpots != 0) {
+                        emptyPosition = getEmptyPosition();
+                        if (tolower(vehicleType[0]) == 'c') {
+                            vehicles[emptyPosition] = new Car();
+                            vehicles[emptyPosition]->setCsv(true);
+                            parkingDataFile >> *vehicles[emptyPosition];
+                            vehicles[emptyPosition]->setCsv(false);
+                            --numberOfSpots;
+                            ++parkedVehicleNumber;
+                        } else if (tolower(vehicleType[0]) == 'm') {
+                            vehicles[emptyPosition] = new Motorcycle();
+                            vehicles[emptyPosition]->setCsv(true);
+                            parkingDataFile >> *vehicles[emptyPosition];
+                            vehicles[emptyPosition]->setCsv(false);
+                            --numberOfSpots;
+                            ++parkedVehicleNumber;
+                        }
+                    }
                 }
-            }
-
-            --currentIndex;
-
-            if (currentIndex > MAXIMUM_PARKING_SPOT) {
-                currentIndex = MAXIMUM_PARKING_SPOT;
-            }
-
-            for (int counter = 0; counter < currentIndex; ++counter) {
-                emptyPosition = getEmptyPosition();
-                if (tolower(dataStream[counter][0]) == 'c') {
-                    vehicles[emptyPosition] = new Car();
-                } else if (tolower(dataStream[counter][0]) == 'm') {
-                    vehicles[emptyPosition] = new Motorcycle();
-                }
-
-                shiftString(2, dataStream[counter]);
-
-                vehicles[emptyPosition]->setCsv(true);
-                vehicles[emptyPosition]->setVehicleInputData(dataStream[counter]);
-                vehicles[emptyPosition]->setVehicleData();
-                vehicles[emptyPosition]->setCsv(false);
-                --numberOfSpots;
-                ++parkedVehicleNumber;
             }
         }
         return true;
