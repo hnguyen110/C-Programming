@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Car.cpp
-Car.h
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Car.h
-
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Car.h
 Vehicle.h
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.h
@@ -19,10 +15,6 @@ iostream
 -
 cstring
 -
-
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Motorcycle.cpp
-Motorcycle.h
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Motorcycle.h
 
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Motorcycle.h
 Vehicle.h
@@ -48,23 +40,9 @@ Car.h
 Motorcycle.h
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Motorcycle.h
 
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/ParkingAppTester.cpp
-fstream
--
-iostream
--
-cctype
--
-Parking.h
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Parking.h
-
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/ReadWritable.h
 iostream
 -
-
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.cpp
-Vehicle.h
-/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.h
 
 /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.h
 iostream

@@ -101,7 +101,7 @@ namespace sdds {
                 return is;
             } else {
                 int licensePlateLen = strlen(licensePlate);
-                while (licensePlateLen > MAX_LICENSE_LENGTH) {
+                while (licensePlateLen > MAX_LICENSE_LENGTH || licensePlateLen == 0) {
                     std::cout << "Invalid Licence Plate, try again: ";
 //                    is >> licensePlate;
                     is.getline(licensePlate, sizeof(licensePlate));

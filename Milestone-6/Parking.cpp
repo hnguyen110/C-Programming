@@ -45,11 +45,9 @@ namespace sdds {
         parkingMenu = nullptr;
         vehicleSelection = nullptr;
 
-//         Loading the data file
         if (loadFileData()) {
             createParkingMenu();
             createVehicleSelectionSubMenu();
-            // Later on this function need to load in the data from the file
         } else {
             cout << "Error in data file" << endl;
         }
@@ -72,6 +70,7 @@ namespace sdds {
             // Later on this function need to load in the data from the file
         } else {
             cout << "Error in data file" << endl;
+            exit(0);
         }
     }
 
@@ -131,18 +130,16 @@ namespace sdds {
         } else {
             int result = vehicleSelection->run();
             if (result == 3) {
-                cout << "Parking Cancelled" << endl;
+                cout << "Parking cancelled" << endl;
             } else {
                 if (result == 1) {
                     vehicles[availablePosition] = new Car();
                     vehicles[availablePosition]->setCsv(false);
                     cin >> *vehicles[availablePosition];
-                    cout << "Parking Car" << endl;
                 } else if (result == 2) {
                     vehicles[availablePosition] = new Motorcycle();
                     vehicles[availablePosition]->setCsv(false);
                     cin >> *vehicles[availablePosition];
-                    cout << "Parking Motorcycle" << endl;
                 }
 
                 // Check if the vehicle has the same license plate or not
@@ -152,18 +149,20 @@ namespace sdds {
                     delete vehicles[availablePosition];
                     vehicles[availablePosition] = nullptr;
                 } else {
+                    cout << endl;
                     cout << "Parking Ticket" << endl;
                     --numberOfSpots;
                     ++parkedVehicleNumber;
                     vehicles[availablePosition]->setParkingSpot(availablePosition + 1);
                     cout << *vehicles[availablePosition];
+                    cout << endl;
                 }
             }
         }
     }
 
     void Parking::returnVehicle() {
-        cout << "Returning Vehicle" << endl;
+        cout << "Return Vehicle" << endl;
         cout << "Enter Licence Plate Number: ";
         char licensePlateNo[255];
         cin.getline(licensePlateNo, sizeof(licensePlateNo));
@@ -178,13 +177,16 @@ namespace sdds {
         if (postion == -1) {
             cout << "License plate " << licensePlateNo << " Not found" << endl;
         } else {
+            cout << endl;
             cout << "Returning: " << endl;
             cout << *vehicles[postion];
+            cout << endl;
             ++numberOfSpots;
             --parkedVehicleNumber;
 //            vehicles[postion]->setEmpty();
             delete vehicles[postion];
             vehicles[postion] = nullptr;
+
         }
     }
 
@@ -208,16 +210,18 @@ namespace sdds {
                 cout << "Closing Parking" << endl;
                 for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
                     if (vehicles[counter] != nullptr) {
+                        cout << endl;
                         cout << "Towing request" << endl;
                         cout << "*********************" << endl;
                         cout << *vehicles[counter];
-                        cout << endl;
 //                        vehicles[counter]->setEmpty();
                         delete vehicles[counter];
                         vehicles[counter] = nullptr;
                     }
                 }
                 state = true;
+            } else {
+                cout << "Aborted!" << endl;
             }
         }
         return state;
@@ -229,53 +233,93 @@ namespace sdds {
         return confirmAction();
     }
 
+//    bool Parking::loadFileData() {
+//        if (!isEmpty()) {
+//            int emptyPosition;
+//            int currentIndex = 0;
+//            char dataStream[100][255];
+//            ifstream parkingDataFile(fileName);
+//            if (parkingDataFile.is_open()) {
+//                while(parkingDataFile.good()) {
+//                    parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
+//                    if (parkingDataFile.bad()) {
+//                        parkingDataFile.clear();
+//                        parkingDataFile.ignore(1000, '\n');
+//                        setEmpty();
+//                        return false;
+//                    }
+//                    ++currentIndex;
+//                }
+//            }
+//
+//            --currentIndex;
+//
+//            if (currentIndex > MAXIMUM_PARKING_SPOT) {
+//                currentIndex = MAXIMUM_PARKING_SPOT;
+//            }
+//
+//            for (int counter = 0; counter < currentIndex; ++counter) {
+//                emptyPosition = getEmptyPosition();
+//                if (tolower(dataStream[counter][0]) == 'c') {
+//                    vehicles[emptyPosition] = new Car();
+//                } else if (tolower(dataStream[counter][0]) == 'm') {
+//                    vehicles[emptyPosition] = new Motorcycle();
+//                }
+//
+//                shiftString(2, dataStream[counter]);
+//
+//                vehicles[emptyPosition]->setCsv(true);
+//                vehicles[emptyPosition]->setVehicleInputData(dataStream[counter]);
+//                vehicles[emptyPosition]->setVehicleData();
+//                vehicles[emptyPosition]->setCsv(false);
+//                --numberOfSpots;
+//                ++parkedVehicleNumber;
+//            }
+//        }
+//        return true;
+//    }
+
     bool Parking::loadFileData() {
-        bool state = false;
         if (!isEmpty()) {
-            cout << "loading data from " << fileName << endl;
             int emptyPosition;
-            int currentIndex = 0;
-            char dataStream[100][255];
+            char vehicleType[255];
             ifstream parkingDataFile(fileName);
             if (parkingDataFile.is_open()) {
-                while(parkingDataFile.good()) {
-                    parkingDataFile.getline(dataStream[currentIndex], sizeof(dataStream[currentIndex]), '\n');
-                    ++currentIndex;
+                while (parkingDataFile.good()) {
+                    parkingDataFile.getline(vehicleType, sizeof(vehicleType), ',');
+                    if (parkingDataFile.bad()) {
+                        parkingDataFile.clear();
+                        parkingDataFile.ignore(1000, '\n');
+                        setEmpty();
+                        return false;
+                    }
+
+                    if (numberOfSpots != 0) {
+                        emptyPosition = getEmptyPosition();
+                        if (tolower(vehicleType[0]) == 'c') {
+                            vehicles[emptyPosition] = new Car();
+                            vehicles[emptyPosition]->setCsv(true);
+                            parkingDataFile >> *vehicles[emptyPosition];
+                            vehicles[emptyPosition]->setCsv(false);
+                            --numberOfSpots;
+                            ++parkedVehicleNumber;
+                        } else if (tolower(vehicleType[0]) == 'm') {
+                            vehicles[emptyPosition] = new Motorcycle();
+                            vehicles[emptyPosition]->setCsv(true);
+                            parkingDataFile >> *vehicles[emptyPosition];
+                            vehicles[emptyPosition]->setCsv(false);
+                            --numberOfSpots;
+                            ++parkedVehicleNumber;
+                        }
+                    }
                 }
             }
-
-            --currentIndex;
-
-            if (currentIndex > MAXIMUM_PARKING_SPOT) {
-                currentIndex = MAXIMUM_PARKING_SPOT;
-            }
-
-            for (int counter = 0; counter < currentIndex; ++counter) {
-                emptyPosition = getEmptyPosition();
-                if (tolower(dataStream[counter][0]) == 'c') {
-                    vehicles[emptyPosition] = new Car();
-                } else if (tolower(dataStream[counter][0]) == 'm') {
-                    vehicles[emptyPosition] = new Motorcycle();
-                }
-
-                shiftString(2, dataStream[counter]);
-
-                vehicles[emptyPosition]->setCsv(true);
-                vehicles[emptyPosition]->setVehicleInputData(dataStream[counter]);
-                vehicles[emptyPosition]->setVehicleData();
-                vehicles[emptyPosition]->setCsv(false);
-                --numberOfSpots;
-                ++parkedVehicleNumber;
-            }
-            state = true;
         }
-        return state;
+        return true;
     }
 
     void Parking::saveDataToFile() {
         if (!isEmpty()) {
-            cout << "Exiting program!" << endl;
-            cout << "Saving data into " << fileName << endl;
             ofstream parkingDataFile(fileName);
             if (parkingDataFile.is_open()) {
                 for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
@@ -288,6 +332,7 @@ namespace sdds {
                 }
             }
         }
+        cin.ignore(1000, '\n');
     }
 
     void Parking::shiftString(int unit, char originalStr[]) {
@@ -302,8 +347,8 @@ namespace sdds {
     bool Parking::isDuplicateLicensePlate(int parkingPosition) {
         bool state = false;
         for (int counter = 0; counter < MAXIMUM_PARKING_SPOT; ++counter) {
-            if (parkingPosition != counter) {
-                if (vehicles[parkingPosition] == vehicles[counter]) {
+            if (parkingPosition != counter && vehicles[counter] != nullptr) {
+                if (*vehicles[parkingPosition] == *vehicles[counter]) {
                     state = true;
                 }
             }
@@ -341,14 +386,13 @@ namespace sdds {
         } else if (result == 2) {
             returnVehicle();
         } else if (result == 3) {
-            cout << "Listing Parked Vehicles" << endl;
+            cout << "*** List of parked vehicles ***" << endl;
             listParkedVehicle();
         } else if (result == 4) {
-            closeParking();
-            state = true;
+            state = closeParking();
         } else if (result == 5) {
-            exitParkingApp();
-            state = true;
+            state = exitParkingApp();
+            cout << "Exiting program!" << endl;
         } else {
             // Do nothing because the input checking is done in run function already
         }
