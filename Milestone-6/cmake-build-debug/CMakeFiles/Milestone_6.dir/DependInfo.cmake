@@ -12,7 +12,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/ReadWritable.cpp" "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o"
   "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Utils.cpp" "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles/Milestone_6.dir/Utils.cpp.o"
   "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.cpp" "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles/Milestone_6.dir/Vehicle.cpp.o"
-  "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/main.cpp" "/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles/Milestone_6.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

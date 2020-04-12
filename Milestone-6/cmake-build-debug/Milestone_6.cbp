@@ -125,9 +125,6 @@
 		<Unit filename="/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.h">
 			<Option target="Milestone_6"/>
 		</Unit>
-		<Unit filename="/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/main.cpp">
-			<Option target="Milestone_6"/>
-		</Unit>
 		<Unit filename="/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

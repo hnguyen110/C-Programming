@@ -42,5 +42,3 @@ CMakeFiles/Milestone_6.dir/Vehicle.cpp.o: ../ReadWritable.h
 CMakeFiles/Milestone_6.dir/Vehicle.cpp.o: ../Vehicle.cpp
 CMakeFiles/Milestone_6.dir/Vehicle.cpp.o: ../Vehicle.h
 
-CMakeFiles/Milestone_6.dir/main.cpp.o: ../main.cpp
-
