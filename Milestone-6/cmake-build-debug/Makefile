@@ -339,33 +339,6 @@ Vehicle.cpp.s:
 	$(MAKE) -f CMakeFiles/Milestone_6.dir/build.make CMakeFiles/Milestone_6.dir/Vehicle.cpp.s
 .PHONY : Vehicle.cpp.s
 
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/Milestone_6.dir/build.make CMakeFiles/Milestone_6.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/Milestone_6.dir/build.make CMakeFiles/Milestone_6.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/Milestone_6.dir/build.make CMakeFiles/Milestone_6.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -399,9 +372,6 @@ help:
 	@echo "... Vehicle.o"
 	@echo "... Vehicle.i"
 	@echo "... Vehicle.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 

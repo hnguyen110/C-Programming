@@ -57,22 +57,9 @@ include CMakeFiles/Milestone_6.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Milestone_6.dir/flags.make
 
-CMakeFiles/Milestone_6.dir/main.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
-CMakeFiles/Milestone_6.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Milestone_6.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/main.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/main.cpp
-
-CMakeFiles/Milestone_6.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Milestone_6.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/main.cpp > CMakeFiles/Milestone_6.dir/main.cpp.i
-
-CMakeFiles/Milestone_6.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Milestone_6.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/main.cpp -o CMakeFiles/Milestone_6.dir/main.cpp.s
-
 CMakeFiles/Milestone_6.dir/Car.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Car.cpp.o: ../Car.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Milestone_6.dir/Car.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Milestone_6.dir/Car.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Car.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Car.cpp
 
 CMakeFiles/Milestone_6.dir/Car.cpp.i: cmake_force
@@ -85,7 +72,7 @@ CMakeFiles/Milestone_6.dir/Car.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/Menu.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Menu.cpp.o: ../Menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Milestone_6.dir/Menu.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Milestone_6.dir/Menu.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Menu.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Menu.cpp
 
 CMakeFiles/Milestone_6.dir/Menu.cpp.i: cmake_force
@@ -98,7 +85,7 @@ CMakeFiles/Milestone_6.dir/Menu.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o: ../Motorcycle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Motorcycle.cpp
 
 CMakeFiles/Milestone_6.dir/Motorcycle.cpp.i: cmake_force
@@ -111,7 +98,7 @@ CMakeFiles/Milestone_6.dir/Motorcycle.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/Parking.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Parking.cpp.o: ../Parking.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Milestone_6.dir/Parking.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Milestone_6.dir/Parking.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Parking.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Parking.cpp
 
 CMakeFiles/Milestone_6.dir/Parking.cpp.i: cmake_force
@@ -124,7 +111,7 @@ CMakeFiles/Milestone_6.dir/Parking.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o: ../ReadWritable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/ReadWritable.cpp
 
 CMakeFiles/Milestone_6.dir/ReadWritable.cpp.i: cmake_force
@@ -137,7 +124,7 @@ CMakeFiles/Milestone_6.dir/ReadWritable.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/Utils.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Utils.cpp.o: ../Utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Milestone_6.dir/Utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Milestone_6.dir/Utils.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Utils.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Utils.cpp
 
 CMakeFiles/Milestone_6.dir/Utils.cpp.i: cmake_force
@@ -150,7 +137,7 @@ CMakeFiles/Milestone_6.dir/Utils.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/Vehicle.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/Vehicle.cpp.o: ../Vehicle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Milestone_6.dir/Vehicle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Milestone_6.dir/Vehicle.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/Vehicle.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/Vehicle.cpp
 
 CMakeFiles/Milestone_6.dir/Vehicle.cpp.i: cmake_force
@@ -163,7 +150,7 @@ CMakeFiles/Milestone_6.dir/Vehicle.cpp.s: cmake_force
 
 CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o: CMakeFiles/Milestone_6.dir/flags.make
 CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o: ../ParkingAppTester.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o -c /Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/ParkingAppTester.cpp
 
 CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.i: cmake_force
@@ -176,7 +163,6 @@ CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.s: cmake_force
 
 # Object files for target Milestone_6
 Milestone_6_OBJECTS = \
-"CMakeFiles/Milestone_6.dir/main.cpp.o" \
 "CMakeFiles/Milestone_6.dir/Car.cpp.o" \
 "CMakeFiles/Milestone_6.dir/Menu.cpp.o" \
 "CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o" \
@@ -189,7 +175,6 @@ Milestone_6_OBJECTS = \
 # External object files for target Milestone_6
 Milestone_6_EXTERNAL_OBJECTS =
 
-Milestone_6: CMakeFiles/Milestone_6.dir/main.cpp.o
 Milestone_6: CMakeFiles/Milestone_6.dir/Car.cpp.o
 Milestone_6: CMakeFiles/Milestone_6.dir/Menu.cpp.o
 Milestone_6: CMakeFiles/Milestone_6.dir/Motorcycle.cpp.o
@@ -200,7 +185,7 @@ Milestone_6: CMakeFiles/Milestone_6.dir/Vehicle.cpp.o
 Milestone_6: CMakeFiles/Milestone_6.dir/ParkingAppTester.cpp.o
 Milestone_6: CMakeFiles/Milestone_6.dir/build.make
 Milestone_6: CMakeFiles/Milestone_6.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable Milestone_6"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rootusr/Desktop/Repos/oop244-final-project/Milestone-6/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable Milestone_6"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Milestone_6.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

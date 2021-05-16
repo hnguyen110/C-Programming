@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Milestone_6.dir/ReadWritable.cpp.o"
   "CMakeFiles/Milestone_6.dir/Utils.cpp.o"
   "CMakeFiles/Milestone_6.dir/Vehicle.cpp.o"
-  "CMakeFiles/Milestone_6.dir/main.cpp.o"
   "Milestone_6"
   "Milestone_6.pdb"
 )
